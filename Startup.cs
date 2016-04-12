@@ -28,6 +28,9 @@ namespace MindHypertrophy
         public void ConfigureServices(IServiceCollection services)
         {
 
+            //Add CORS to enable cross orgin requests
+            services.AddCors();
+
             // Add framework services.
             services.AddMvc();
 
@@ -35,9 +38,6 @@ namespace MindHypertrophy
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<AppDbContext>();
-
-            //Add CORS to enable cross orgin requests
-            services.AddCors();
 
             //Add interface to services
             services.AddScoped<IAppRepository, AppRepository>();
@@ -57,16 +57,16 @@ namespace MindHypertrophy
                 loggerFactory.AddDebug(LogLevel.Error);
             }
 
+            //Add allows cors orgins
+            app.UseCors(builder =>
+                builder.WithOrigins("https://mindhypertrophy.herokuapp.com")
+            );
+
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
             app.UseMvc();
-
-            //Add allows cors orgins
-            app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:3000")
-            );
         }
 
         // Entry point for the application.
