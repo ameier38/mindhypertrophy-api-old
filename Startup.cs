@@ -59,7 +59,7 @@ namespace MindHypertrophy
 
             //Add allows cors orgins
             app.UseCors(builder =>
-                builder.WithOrigins("https://mindhypertrophy.herokuapp.com", "http://mindhypertrophy.herokuapp.com")
+                builder.WithOrigins("https://mindhypertrophy.herokuapp.com", "http://mindhypertrophy.herokuapp.com", "https://mindhypertrophy.com", "http://mindhypertrophy.com", "http://localhost:3000")
             );
 
             app.UseIISPlatformHandler();
