@@ -61,6 +61,7 @@ namespace MindHypertrophy.Models
                 var cardDetail = new CardDetailDTO()
                 {
                     Id = card.Id,
+                    Slug = card.Slug,
                     Title = card.Title,
                     ImageUrl = card.ImageUrl,
                     CreatedDate = card.CreatedDate.ToString("MMMM dd, yyyy"),
@@ -74,7 +75,34 @@ namespace MindHypertrophy.Models
 
                 return cardDetail;
             }
+        }
 
+        public CardDetailDTO GetCardBySlug(string slug)
+        {
+            var card = _context.Cards.Include(c => c.CardTags).ThenInclude(ct => ct.Tag).FirstOrDefault(c => c.Slug == slug);
+            if (card == null)
+            {
+                return null;
+            }
+            else
+            {
+                var cardDetail = new CardDetailDTO()
+                {
+                    Id = card.Id,
+                    Slug = card.Slug,
+                    Title = card.Title,
+                    ImageUrl = card.ImageUrl,
+                    CreatedDate = card.CreatedDate.ToString("MMMM dd, yyyy"),
+                    Content = card.Content,
+                    Tags = card.CardTags.Select(ct => new TagDTO()
+                    {
+                        Id = ct.Tag.Id,
+                        Name = ct.Tag.Name
+                    }).ToList()
+                };
+
+                return cardDetail;
+            }
         }
 
         public IEnumerable<TagDTO> GetTags()

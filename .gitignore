@@ -227,3 +227,9 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Visual Studio Code
+.vscode
+
+# Spelling
+cSpell.json

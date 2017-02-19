@@ -6,6 +6,7 @@ namespace MindHypertrophy.Models
     {
         IEnumerable<CardDTO> GetCards();
         CardDetailDTO GetCardById(int cardId);
+        CardDetailDTO GetCardBySlug(string slug);
         IEnumerable<CardDTO> GetCardsByTagId(int tagId);
         IEnumerable<TagDTO> GetTags();
     }

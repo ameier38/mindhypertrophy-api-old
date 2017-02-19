@@ -33,6 +33,17 @@ namespace MindHypertrophy.Controllers
             return new ObjectResult(card);
         }
 
+        [HttpGet("cards/{slug}")]
+        public IActionResult GetCardBySlug(string slug, [FromServices] IAppRepository CardsRepo)
+        {
+            var card = CardsRepo.GetCardBySlug(slug);
+            if (card == null)
+            {
+                return HttpNotFound();
+            }
+            return new ObjectResult(card);
+        }
+
         // GET: api/tags
         [HttpGet("tags")]
         public IEnumerable<TagDTO> Get([FromServices] IAppRepository CardsRepo)
