@@ -21,18 +21,7 @@ namespace MindHypertrophy.Controllers
             }
         }
 
-        // GET api/cards/5
-        [HttpGet("cards/{cardId}")]
-        public IActionResult GetCardById(int cardId, [FromServices] IAppRepository CardsRepo)
-        {
-            var card = CardsRepo.GetCardById(cardId);
-            if (card == null)
-            {
-                return HttpNotFound();
-            }
-            return new ObjectResult(card);
-        }
-
+        // GET api/cards/article_slug
         [HttpGet("cards/{slug}")]
         public IActionResult GetCardBySlug(string slug, [FromServices] IAppRepository CardsRepo)
         {

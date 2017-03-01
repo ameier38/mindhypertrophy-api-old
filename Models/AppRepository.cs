@@ -19,6 +19,7 @@ namespace MindHypertrophy.Models
             {
                 Id = c.Id,
                 Title = c.Title,
+                Slug = c.Slug,
                 Summary = c.Summary,
                 CreatedDate = c.CreatedDate.ToString("MMMM dd, yyyy"),
                 Tags = c.CardTags.Select(ct => new TagDTO()
@@ -38,6 +39,7 @@ namespace MindHypertrophy.Models
                                         {
                                             Id = c.Id,
                                             Title = c.Title,
+                                            Slug = c.Slug,
                                             Summary = c.Summary,
                                             CreatedDate = c.CreatedDate.ToString("MMMM dd, yyyy"),
                                             Tags = c.CardTags.Select(ct => new TagDTO()
