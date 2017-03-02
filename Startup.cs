@@ -63,9 +63,7 @@ namespace MindHypertrophy
                     "https://mindhypertrophy.herokuapp.com", 
                     "http://mindhypertrophy.herokuapp.com", 
                     "https://mindhypertrophy.com", 
-                    "http://mindhypertrophy.com", 
-                    "http://localhost:3000", 
-                    "http://localhost:8080"
+                    "http://mindhypertrophy.com"
                  )
             );
 
